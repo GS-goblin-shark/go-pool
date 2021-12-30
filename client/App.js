@@ -5,6 +5,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Messages from './components/Messages';
+import DirMessage from './components/DirectMessage';
+import Thread from './components/Thread';
 
 function App() {
   const [state, updateState] = useState({
@@ -23,8 +25,14 @@ function App() {
       {/* <Route path='/signup'>
         <Signup />
       </Route> */}
-      <Route path='/messages'>
+      <Route exact path='/messages'>
         <Messages />
+      </Route>
+      <Route path='/messages/:id'>
+        <DirMessage />
+      </Route>
+      <Route path='/thread/:id'>
+        <Thread />
       </Route>
     </Switch>
   );
