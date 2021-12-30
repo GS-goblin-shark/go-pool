@@ -1,15 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
-// import './style.css';
-
-// class App extends Component{
-//   render(){
-//       return(
-//           <div>
-//               <h1>Go-Pool App Component</h1>
-//           </div>
-//       )
-//   }
-// }
+import React, { useState, useEffect } from "react";
 
 function App() {
     const [state, updateState] = useState(
@@ -21,8 +10,8 @@ function App() {
 
     return (
         <div>
-              <h1>Go-Pool App Component</h1>
-          </div>
+            <h1>Go-Pool App Component</h1>
+        </div>
     )
 }
 
