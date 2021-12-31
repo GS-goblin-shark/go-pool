@@ -15,26 +15,28 @@ function App() {
   });
 
   return (
-    <Switch>
-      <Route exact path='/'>
-        <Dashboard />
-      </Route>
-      <Route path='/login'>
-        <Login />
-      </Route>
-      {/* <Route path='/signup'>
-        <Signup />
-      </Route> */}
-      <Route exact path='/messages'>
-        <Messages />
-      </Route>
-      <Route path='/messages/:id'>
-        <DirMessage />
-      </Route>
-      <Route path='/thread/:id'>
-        <Thread />
-      </Route>
-    </Switch>
+    <div>
+      <Switch>
+        <Route exact path='/'>
+          <Dashboard />
+        </Route>
+        <Route path='/login'>
+          <Login />
+        </Route>
+        {/* <Route path='/signup'>
+          <Signup />
+        </Route> */}
+        <Route exact path='/messages'>
+          <Messages />
+        </Route>
+        <Route path='/messages/:id'>
+          <DirMessage />
+        </Route>
+        <Route path='/thread/:id'>
+          <Thread />
+        </Route>
+      </Switch>
+    </div>
   );
 }
 
