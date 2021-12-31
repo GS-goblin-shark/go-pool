@@ -5,7 +5,7 @@ CREATE TABLE public.users (
     "email" varchar NOT NULL UNIQUE,
     "password" varchar NOT NULL,
     "address" varchar NOT NULL,
-    "phoneNumber" varchar NOT NULL,
+    "phone_number" varchar NOT NULL,
     PRIMARY KEY ("_id") 
 );
 
