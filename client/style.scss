@@ -1,0 +1,29 @@
+$light-blue: #e3f2fd;
+
+.navbar{
+    background-color: $light-blue !important;
+}
+
+input{
+    margin: 10px;
+}
+
+p{
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+#login-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+#loginButton{
+  background-color: $light-blue;
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+}
