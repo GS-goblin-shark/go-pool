@@ -40,8 +40,10 @@ module.exports = {
       publicPath: '/',
       directory: path.join(__dirname, 'build'),
     },
+    historyApiFallback: true,
+    hot: true,
     proxy: {
-      '/': 'http://localhost:3000',
+      '/api': 'http://localhost:3000',
     },
   },
   resolve: {
