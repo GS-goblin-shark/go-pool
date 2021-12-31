@@ -6,7 +6,7 @@ CREATE TABLE public.users (
     "address" varchar NOT NULL,
     "phoneNumber" varchar NOT NULL,
     PRIMARY KEY ("_id") 
-)
+);
 
 CREATE TABLE public.threads (
    	"_id" serial NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE public.threads (
     "event_id" bigint,
     "user_id" bigint,
     PRIMARY KEY ("_id") 
-)
+);
 
 CREATE TABLE public.event (
     "_id" serial NOT NULL,
@@ -23,4 +23,4 @@ CREATE TABLE public.event (
     "location" varchar,
     PRIMARY KEY ("_id")
 
-)
+);
