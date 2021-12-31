@@ -10,7 +10,17 @@ CREATE TABLE public.users (
 
 CREATE TABLE public.threads (
    	"_id" serial NOT NULL,
-       "thread" varchar NOT NUll,
-       "date" 
+    "thread" varchar NOT NUll,
+    "date" DATE NOT NULL,
+    "event_id" bigint,
+    "user_id" bigint,
     PRIMARY KEY ("_id") 
+)
+
+CREATE TABLE public.event (
+    "_id" serial NOT NULL,
+    "date" DATE NOT NULL,
+    "location" varchar,
+    PRIMARY KEY ("_id")
+
 )
