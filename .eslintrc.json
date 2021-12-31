@@ -12,6 +12,7 @@
     "space-infix-ops": "warn",
     "no-empty": "warn",
     "no-empty-function": "warn",
-    "no-console": "off"
+    "no-console": "off",
+    "import/no-unresolved": false
   }
 }
