@@ -1,6 +1,7 @@
 CREATE TABLE public.users (
    	"_id" serial NOT NULL,
-	"name" varchar NOT NULL,
+	"first_name" varchar NOT NULL,
+    "last_name" varchar NOT NULL,
     "email" varchar NOT NULL UNIQUE,
     "password" varchar NOT NULL,
     "address" varchar NOT NULL,
@@ -19,6 +20,7 @@ CREATE TABLE public.threads (
 
 CREATE TABLE public.event (
     "_id" serial NOT NULL,
+    "event_name" varchar NOT NULL,
     "date" DATE NOT NULL,
     "location" varchar,
     PRIMARY KEY ("_id")
