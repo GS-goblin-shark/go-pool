@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 //import from '../style.css';
 
-function signUp({ newUser }) {
-  // const [newUser, createUser] = useState('');
+function signUp({ user }) {
+  const [newUser, createUser] = useState('');
 
   // const handleSubmit = e => {
   //     e.preventDefault();
