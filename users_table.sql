@@ -7,3 +7,10 @@ CREATE TABLE public.users (
     "phoneNumber" varchar NOT NULL,
     PRIMARY KEY ("_id") 
 )
+
+CREATE TABLE public.threads (
+   	"_id" serial NOT NULL,
+       "thread" varchar NOT NUll,
+       "date" 
+    PRIMARY KEY ("_id") 
+)
