@@ -6,6 +6,7 @@ import Login from './components/login';
 import Messages from './components/messages';
 import DirMessage from './components/directMessage';
 import Thread from './components/thread';
+import NavBar from './components/navbar';
 
 function App() {
   const [state, updateState] = useState({
@@ -15,6 +16,7 @@ function App() {
 
   return (
     <div>
+      <NavBar/>
       <Switch>
         <Route exact path='/'>
           <Dashboard />

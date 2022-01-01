@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
+const apiRouter = require('./routes/api');
 require('dotenv').config();
 
 const app = express();
@@ -16,6 +17,8 @@ if (process.env.NODE_ENV === 'production') {
     res.status(200).sendFile(path.join(__dirname, '../client/index.html'))
   );
 }
+
+app.use('/api', apiRouter);
 
 app.use((req, res) => res.sendStatus(404));
 
