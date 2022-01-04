@@ -83,7 +83,7 @@ userController.login = async (req, res, next) => {
     return next();
   } catch (err) {
     return next({
-      log: `Error with userController.login: ${err}`,
+      log: `Error with userController.login ${err}`,
       message: {
         err: 'an error occured in the backend',
       },
