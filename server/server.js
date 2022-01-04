@@ -14,7 +14,6 @@ app.use(express.urlencoded({ extended: true }));
 
 const mongoURI = 'mongodb://localhost/go-pool-session'
 mongoose.connect(mongoURI);
-const apiRouter = require('./routes/api');
 
 if (process.env.NODE_ENV === 'production') {
   app.use('/build', express.static(path.join(__dirname, '../build')));

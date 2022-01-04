@@ -77,6 +77,7 @@ userController.login = async (req, res, next) => {
       password,
       userPassword.rows[0].password
     );
+    res.locals.id = userPassword.rows[0]._id;
     res.locals.isMatch = isMatch;
 
     return next();
