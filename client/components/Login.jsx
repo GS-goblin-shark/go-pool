@@ -17,7 +17,6 @@ function Login() {
   }
   
   const login = ( ) => {
-    console.log (emailValue, passwordValue)
     axios.post('/api/login', { email: emailValue, password: passwordValue})
     .then((res) => {
       console.log(res)
