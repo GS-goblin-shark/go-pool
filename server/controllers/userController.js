@@ -39,7 +39,8 @@ userController.signup = async (req, res, next) => {
 
       db.query(text, params)
         .then((data) => {
-          console.log(data);
+        //   console.log(data);
+          res.locals.user = data.rows[0]
           return next();
         })
         .catch((err) => {
@@ -50,6 +51,9 @@ userController.signup = async (req, res, next) => {
         });
     } catch (err) {
       console.log(err);
+      next({
+          log: `ERROR hashing password in userController.signup: ${err}`
+      })
     }
   }
 };
