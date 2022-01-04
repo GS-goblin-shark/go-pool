@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const Session = require('../models/sessionModel');
 
 const sessionController = {};
@@ -41,3 +42,6 @@ sessionController.startSession = (req, res, next) => {
 }
 
 module.exports = sessionController;
+=======
+//
+>>>>>>> dev

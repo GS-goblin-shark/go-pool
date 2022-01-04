@@ -1,8 +1,11 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
+<<<<<<< HEAD
 const apiRouter = require('./routes/api');
 const mongoose = require('mongoose');
+=======
+>>>>>>> dev
 require('dotenv').config();
 
 const app = express();
@@ -12,8 +15,12 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+<<<<<<< HEAD
 const mongoURI = 'mongodb://localhost/go-pool-session'
 mongoose.connect(mongoURI);
+=======
+const apiRouter = require('./routes/api');
+>>>>>>> dev
 
 if (process.env.NODE_ENV === 'production') {
   app.use('/build', express.static(path.join(__dirname, '../build')));
