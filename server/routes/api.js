@@ -1,22 +1,25 @@
 const express = require('express');
+const multer = require('multer');
 const userController = require('../controllers/userController');
 const cookieController = require('../controllers/cookieController');
 const messageController = require('../controllers/messageController');
 const sessionController = require('../controllers/sessionController');
 
 const router = express.Router();
+const parser = multer().none();
 
-router.post('/signup', userController.signup, (req, res) => {
+router.post('/signup', parser, userController.signup, (req, res) => {
   // steps: signup middleare to add user data to database, session middleware, cookie middleware to set a cookie
   // inputs: first_name, last_name, email, password, address, phoneNumber
-  res.status(200).send('Account successfully created')
+  res.status(200).send('Account successfully created');
 });
 
-router.post('/login', userController.login, (req, res) => {
+router.post('/login', parser, userController.login, (req, res) => {
   // need to add set cookie middleware after login middleware
   // steps: login middleware to verify user data in db, session middleware, cookie middleware to set cookie
   // inputs: email, password
-  res.status(200).send('Successfully logged in')
+  // res.status(200).send('Successfully logged in');
+  return res.status(200).json({ isMatch: res.locals.isMatch });
 });
 
-module.exports = router; 
+module.exports = router;
