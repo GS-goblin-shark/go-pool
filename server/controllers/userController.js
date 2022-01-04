@@ -62,6 +62,12 @@ userController.login = async (req, res, next) => {
   // add query text
   const { email, password } = req.body;
 
+  if (!email || !password) {
+    console.log('incomplete login fields');
+    res.locals.isMatch = false;
+    return next();
+  }
+
   const query = 'SELECT * FROM users u WHERE email = $1';
   const params = [email];
   try {
