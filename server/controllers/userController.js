@@ -78,6 +78,7 @@ userController.login = async (req, res, next) => {
       userPassword.rows[0].password
     );
     res.locals.isMatch = isMatch;
+
     return next();
   } catch (err) {
     return next({
