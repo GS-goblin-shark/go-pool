@@ -10,11 +10,12 @@ function Dashboard() {
 
   return (
     <div id='dashboardComponent'>
-      <h1>Upcoming Events</h1>
+      <h2>Select a date to view events:</h2>
       <div id='calendar-div'>
         <Calendar value={dateState} onChange={changeDate}/>
         <p>Events for <b>{moment(dateState).format('MMMM Do YYYY')}</b></p>
       </div>
+      <h1>Upcoming Events</h1>
     </div>
   );
 }
