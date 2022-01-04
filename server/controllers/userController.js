@@ -16,7 +16,8 @@ userController.signup = async (req, res, next) => {
     !req.body.address ||
     !req.body.phone_number
   ) {
-    console.log('Incomplete');
+    console.log('Incomplete signup fields');
+    return next();
   } else {
     const { first_name, last_name, email, address, phone_number } = req.body;
 
@@ -80,7 +81,7 @@ userController.login = async (req, res, next) => {
     return next();
   } catch (err) {
     return next({
-      log: `Error with userController.login ${err}`,
+      log: `Error with userController.login: ${err}`,
       message: {
         err: 'an error occured in the backend',
       },

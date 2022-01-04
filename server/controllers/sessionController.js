@@ -1,27 +1,27 @@
-<<<<<<< HEAD
 const Session = require('../models/sessionModel');
 
 const sessionController = {};
 
 sessionController.isLoggedIn = (req, res, next) => {
     if (!req.cookies.ssid){
-        return next ({
-            //enter message
-        })
+        console.log('User not logged in')
+        return next ();
     }
 
     Session.findOne({ cookieId: req.cookies.ssid })
     .then((sessionData) => {
         if (!sessionData){
-            return next ({
-                //enter message
-            })
+            console.log('No session data found');
+            return next ()
         }
         return next();
     })
     .catch((err) => {
         return next({
-            //enter err message 
+            log: `Error with sessionController.isLoggedIn: ${err}`,
+            message: {
+                err: 'Error occurred in sessionController.isLoggedIn'
+            }
         })
     })
 }
@@ -32,16 +32,14 @@ sessionController.startSession = (req, res, next) => {
     Session.create({ cookieId: res.locals.id }, (err, sessionData) => {
         if (err) {
             return next ({
-                //enter message
+                log: `Error with sessionController.startSession: ${err}`,
+            message: {
+                err: 'Error occurred in sessionController.startSession'
+            }
             })
         }
-        return next({
-            //err message
-        })
+        return next();
     })
 }
 
 module.exports = sessionController;
-=======
-//
->>>>>>> dev
