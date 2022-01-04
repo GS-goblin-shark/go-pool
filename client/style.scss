@@ -16,11 +16,14 @@ p{
 // Dashboard page
 #dashboardComponent{
   margin: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #calendar-div{
     display: flex;
-    justify-content: flex-start;
+    justify-content: f;
 }
 
 //login page
