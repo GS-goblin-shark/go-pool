@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/GS-goblin-shark/go-pool#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "bootstrap": "^5.1.3",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
