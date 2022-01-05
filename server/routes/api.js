@@ -6,7 +6,7 @@ const sessionController = require('../controllers/sessionController');
 
 const router = express.Router();
 
-router.post('/signup', userController.signup, (req, res) => {
+router.post('/signup', userController.signup, sessionController.startSession, cookieController.setSSIDCookie, (req, res) => {
   // steps: signup middleare to add user data to database, session middleware, cookie middleware to set a cookie
   // inputs: first_name, last_name, email, password, address, phoneNumber
   res.status(200).send('Account successfully created');

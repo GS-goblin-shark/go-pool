@@ -38,6 +38,7 @@ sessionController.startSession = (req, res, next) => {
             }
             })
         }
+        // console.log(sessionData);
         return next();
     })
 }

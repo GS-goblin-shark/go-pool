@@ -40,8 +40,9 @@ userController.signup = async (req, res, next) => {
 
       db.query(text, params)
         .then((data) => {
-          //   console.log(data);
+          // console.log(data);
           res.locals.user = data.rows[0];
+          res.locals.id = data.rows[0]._id;
           return next();
         })
         .catch((err) => {
