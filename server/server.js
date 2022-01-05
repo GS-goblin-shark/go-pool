@@ -1,11 +1,13 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-const apiRouter = require('./routes/api');
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+const apiRouter = require('./routes/api');
+const threadRouter = require('./routes/thread');
 
 app.use(cors());
 app.use(express.json());
@@ -19,6 +21,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.use('/api', apiRouter);
+app.use('/thread', threadRouter);
 
 app.use((req, res) => res.sendStatus(404));
 
