@@ -53,6 +53,15 @@ button {
   flex-direction: column;
 }
 
+#thread-modal-button{
+  align-self: center;
+}
+
+#new-thread-form{
+  display: flex;
+  flex-direction: column;
+}
+
 //login page
 #login-page{
     display: flex;
