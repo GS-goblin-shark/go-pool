@@ -16,7 +16,8 @@ userController.signup = async (req, res, next) => {
     !req.body.address ||
     !req.body.phone_number
   ) {
-    console.log('Incomplete');
+    console.log('Incomplete signup fields');
+    return next();
   } else {
     const { first_name, last_name, email, address, phone_number } = req.body;
 
@@ -39,7 +40,7 @@ userController.signup = async (req, res, next) => {
 
       db.query(text, params)
         .then((data) => {
-          //   console.log(data);
+          // console.log(data);
           res.locals.user = data.rows[0];
           return next();
         })
@@ -76,7 +77,9 @@ userController.login = async (req, res, next) => {
       password,
       userPassword.rows[0].password
     );
+    res.locals.id = userPassword.rows[0]._id;
     res.locals.isMatch = isMatch;
+
     return next();
   } catch (err) {
     return next({
