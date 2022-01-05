@@ -4,6 +4,13 @@ $light-blue: #e3f2fd;
     background-color: $light-blue !important;
 }
 
+.threadCard{
+  background-color: lightblue;
+  height: 100px;
+  width: 200px;
+  margin: 20px;
+}
+
 input{
     margin: 10px;
 }
@@ -13,17 +20,37 @@ p{
     margin-block-end: 0em;
 }
 
+h1{
+  text-align: center;
+  margin: 1em;
+}
+
+h2{
+  text-align: center;
+  margin: 1em;
+}
+
+button {
+  background-color: $light-blue;
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+}
+
 // Dashboard page
 #dashboardComponent{
   margin: 2em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 #calendar-div{
     display: flex;
-    justify-content: f;
+    justify-content: space-between;
+}
+
+//new event modal
+#new-event{
+  display: flex;
+  flex-direction: column;
 }
 
 //login page
@@ -35,12 +62,7 @@ p{
     margin: 10px;
 }
 
-#loginButton{
-  background-color: $light-blue;
-  border: none;
-  border-radius: 5px;
-  padding: 8px;
-}
+
 
 //react-calendar styling
 .react-calendar {
