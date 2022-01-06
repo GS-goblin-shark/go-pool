@@ -1,8 +1,14 @@
 $light-blue: #e3f2fd;
 $lt-prim: lighten(#007bff, 45%);
+
+
+
 body{
-  background-color: $lt-prim;
+  background-image: linear-gradient(white, $lt-prim);
+  height: 100%;
+  background-attachment: fixed;
 }
+
 input{
     margin: 10px;
 }
