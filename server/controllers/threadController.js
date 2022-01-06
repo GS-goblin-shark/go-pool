@@ -49,7 +49,7 @@ threadController.getUpcomingEvents = async (req, res, next) => {
   const dateNow = new Date().toLocaleDateString('en-US');
   const params = [dateNow];
 
-  const text = 'SELECT event_name, date FROM event WHERE date >= $1;';
+  const text = `SELECT event_name, TO_CHAR(date, 'MM/DD/YYYY') as date FROM event WHERE date >= $1;`;
 
   try {
     const upcomingEventData = await db.query(text, params);
