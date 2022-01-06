@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import axios from 'axios';
+import Modal from 'react-modal';
 
 //a display of all the DMs with different users, each box is a button that redirects 
 //to DirectMessages.jsx, which only displays the DM's with that user
@@ -19,22 +20,21 @@ function Messages() {
   // "date" TIMESTAMP NOT NULL,
   // "message" varchar NOT NULL,
 
-  useEffect(() => {
-    // GET request using axios inside useEffect React hook
-    axios.get('/api/message')
-        .then(response => 
+//   useEffect(() => {
+//     // GET request using axios inside useEffect React hook
+//     axios.get('/api/message')
+//         .then(response => 
           
+//           console.log(response.data);
+
+//           setState({...state,
+//           sender: response.data.from_user_id,
+//           recipient: response.data.to_user_id,
           
-          setState({...state,
-          sender: response.data.from_user_id,
-          recipient: response.data.to_user_id,
-          
-          })
-          )
-          //setTotalReactPackages(response.data.total));
+//           })
+//           )
         
-// empty dependency array means this effect will only run once (like componentDidMount in classes)
-}, []);
+// }, []);
 
 
 

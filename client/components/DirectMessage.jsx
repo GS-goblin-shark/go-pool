@@ -5,11 +5,16 @@ import Modal from 'react-modal';
 function DirMessage() {
 
   const [state, setState] = useState({
-    sender: '',
-    recipient: '',
-    message: ''
-
+    openModal: true,
+    submitted: false,
+    messages: [],
+    // sender: '',
+    // recipient: '',
+    // date: '',
+    // message: '',
   })
+
+  
 
   // useEffect(() => {
   //   const axios = require('axios');
@@ -22,16 +27,23 @@ function DirMessage() {
 
   // }) 
 
-  //to_email 
-  //from_email
+  //response: array of obj
+  //to_email: str
+  //from_email: str
+  //date: YYYY-MM-DD HH24:MM:SS (str)
+  //message: str
+
 
   useEffect(() => {
     // GET request using axios inside useEffect React hook
     axios.get('/api/message')
         .then(response => 
+          //use the data from the response to setState 
           setState({...state, 
             sender: response.data.from_email,
             recipient: response.data.to_emai,
+            date: response.data.date,
+            message: 
           })
           )
 
@@ -43,22 +55,23 @@ function DirMessage() {
     //console.log(state)
   }
 
-  const handleSubmit = e => {
+  const sendDM = e => {
       e.preventDefault();
 
       //console.log('submitted')
 
-      // axios.post('/api/message', {
-      //   sender: state.sender,
-      //   recipient: state.recipient,
-      //   message: state.message
-      // })
-      // .then(function (response) {
-      //   console.log(response);
-      // })
-      // .catch(function (error) {
-      //   console.log(error);
-      // });
+      axios.post('/api/message', {
+        from_email: state.sender,
+        to_email: state.recipient,
+        message: state.message
+      })
+      .then(function (response) {
+        console.log(response);
+        setState({...state, submitted: true})
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
   //make a get request with axios to retrieve data that matches the recipient
 
@@ -71,28 +84,36 @@ function DirMessage() {
   return (
     <div>
       <h1>This is a dm thread</h1>
-      <form>
-        <label>
-          Recipient:
-        <input
-          type='text'
-          name='recipient'
-          required>{state.recipient}
-        </input>
-        </label>
-        <label>
-          Message: 
-        <input
-          type='text'
-          name='message'
-          onChange={handleOnChange}
-          placeholder='Enter message here'
-          required>
-        </input>
-        </label>
-        <button type='submit' onClick={handleSubmit}>Send
-        </button>
-      </form>
+      <Modal 
+                className="Modal__Bootstrap modal-dialog"
+                isOpen={modalIsOpen} 
+                onRequestClose={closeModal} 
+            >
+                <div className="modal-content">
+                    
+                    <div className="modal-header">
+                        <h4 className="modal-title">Create a New Post</h4>
+                        <button type="button" className="close" onClick={closeModal}>
+                            <span aria-hidden="true">&times;</span>
+                            <span className="sr-only"></span>
+                        </button>
+                    </div>
+                    {!submitted &&
+                        <div> 
+                        <div className="modal-body" id="new-thread-form">
+                            <label>Recipient: {state.recipient}</label>
+                            <label>Message:
+                            <input type='text' onChange={handleOnChange} placeholder='Enter DM here' required></input>
+                            </label>
+                        </div>
+                        <div className="modal-footer">
+                        <button type="button" className="btn btn-primary" onClick={sendDM}>Send DM</button>
+                        </div>
+                        </div>
+                    }
+                    {submitted && <p>Your DM was sent!</p>}
+                </div>
+            </Modal>
     </div>
   );
 }

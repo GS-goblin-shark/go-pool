@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 function Login() {
   const [emailValue, setEmailValue] = useState('');
@@ -29,10 +30,6 @@ function Login() {
     })
   }
 
-  const clicked = () =>{
-    console.log('clicked');
-  }
-
   return (
     <div id='login-page'>
       <div className='form-group' id='login-form'>
@@ -43,8 +40,7 @@ function Login() {
       </div>
       <button id='loginButton' type='submit' onClick={login}>Log In</button>
       {hasError && <p>Invalid Email or Password</p>}
-      <p>Don't have an account?  Click here to sign up!</p>
-      {/* <p>Don't have an account?  Click <Link id='signUp-link' to={'/signup'}>here</Link> to sign up!</p> */}
+      <p>Don't have an account?  Click <Link id='signUp-link' to={'/signup'}>here</Link> to sign up!</p>
     </div>
   );
 }
