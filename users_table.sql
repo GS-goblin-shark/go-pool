@@ -26,3 +26,13 @@ CREATE TABLE public.event (
     PRIMARY KEY ("_id")
 
 );
+
+CREATE TABLE public.messages (
+    "_id" serial NOT NULL,
+    "from_user_id" bigint NOT NULL,
+    "to_user_id" bigint NOT NULL,
+    "date" TIMESTAMP NOT NULL,
+    "message" varchar NOT NULL,
+    PRIMARY KEY ("_id")
+
+)
