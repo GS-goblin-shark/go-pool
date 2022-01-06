@@ -46,10 +46,13 @@ threadController.createPost = async (req, res, next) => {
 
 threadController.getUpcomingEvents = async (req, res, next) => {
 
-  const text = 'SELECT event_name, date FROM event WHERE date >= CURRENT_DATE;';
+  const dateNow = new Date().toLocaleDateString('en-US');
+  const params = [dateNow];
+
+  const text = 'SELECT event_name, date FROM event WHERE date >= $1;';
 
   try {
-    const upcomingEventData = await db.query(text);
+    const upcomingEventData = await db.query(text, params);
     console.log(upcomingEventData.rows);
     res.locals.upcomingEvents = upcomingEventData.rows
     return next();
