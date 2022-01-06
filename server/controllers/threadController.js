@@ -50,8 +50,8 @@ threadController.getUpcomingEvents = async (req, res, next) => {
 
   try {
     const upcomingEventData = await db.query(text);
-    console.log(upcomingEventData.rows[0]);
-    res.locals.upcomingEvents = upcomingEventData.rows[0]
+    console.log(upcomingEventData.rows);
+    res.locals.upcomingEvents = upcomingEventData.rows
     return next();
 
   } catch (err) {
