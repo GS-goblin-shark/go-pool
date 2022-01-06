@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 3000;
 
 const apiRouter = require('./routes/api');
 const threadRouter = require('./routes/thread');
+const messageRouter = require('./routes/message');
 
 app.use(cors());
 app.use(express.json());
@@ -22,6 +23,7 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use('/api', apiRouter);
 app.use('/thread', threadRouter);
+app.use('/message', messageRouter);
 
 app.use((req, res) => res.sendStatus(404));
 
