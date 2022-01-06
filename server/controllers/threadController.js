@@ -44,4 +44,24 @@ threadController.createPost = async (req, res, next) => {
   }
 };
 
+threadController.getUpcomingEvents = async (req, res, next) => {
+
+  try {
+    const text = 'SELECT event_name, date FROM event WHERE date >= CURRENT_DATE;';
+
+    const upcomingEventData = await db.query(text);
+    console.log(upcomingEventData);
+    res.locals.upcomingEvents = upcomingEventData.rows[0]
+    return next();
+
+  } catch (err) {
+    return next({
+      log: `Error in threadController.getUpcomingEvents: ${err}`,
+      message: {
+        err: `Error in the backend from threadController.getUpcomingEvents`
+      }
+    });
+  }
+};
+
 module.exports = threadController;
