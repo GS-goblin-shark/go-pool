@@ -13,10 +13,6 @@ mongoose
     return;
   });
 
-//console log connected with anon func
-//.then
-//catch for err
-
 const sessionSchema = new Schema({
   cookieId: { type: String, required: true, unique: true },
   createdAt: { type: Date, expires: '30m', default: Date.now },

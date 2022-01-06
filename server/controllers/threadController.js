@@ -44,4 +44,28 @@ threadController.createPost = async (req, res, next) => {
   }
 };
 
+threadController.getUpcomingEvents = async (req, res, next) => {
+
+  const dateNow = new Date().toLocaleDateString('en-US');
+  const params = [dateNow];
+
+  const text = `SELECT event_name, TO_CHAR(date, 'Mon DD') as date FROM event WHERE date >= $1;`;
+  //have date spelled out 
+
+  try {
+    const upcomingEventData = await db.query(text, params);
+    console.log(upcomingEventData.rows);
+    res.locals.upcomingEvents = upcomingEventData.rows
+    return next();
+
+  } catch (err) {
+    return next({
+      log: `Error in threadController.getUpcomingEvents: ${err}`,
+      message: {
+        err: `Error in the backend from threadController.getUpcomingEvents`
+      }
+    });
+  }
+};
+
 module.exports = threadController;
