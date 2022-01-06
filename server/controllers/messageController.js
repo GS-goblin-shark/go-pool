@@ -11,7 +11,7 @@ messageController.getMessages = async (req, res, next) => {
   const paramUser = [from_email, to_email];
 
   const queryMessages =
-    'SELECT * FROM messages WHERE from_user_id = $1 or to_user_id = $2';
+    "SELECT _id, from_user_id, to_user_id, TO_CHAR(date, 'MM/DD/YYYY HH24:MM:SS')  FROM messages WHERE from_user_id = $1 AND to_user_id = $2 or from_user_id = $2 AND to_user_id = $1";
   const paramMessages = [];
 
   try {
@@ -24,7 +24,9 @@ messageController.getMessages = async (req, res, next) => {
       : (to_userid = userID.rows[1]._id);
     paramMessages.push(from_userid);
     paramMessages.push(to_userid);
-    console.log(paramMessages);
+    const messages = await db.query(queryMessages, paramMessages);
+    // console.log(messages.rows);
+    res.locals.messageBetween = messages.rows;
     return next();
   } catch (err) {
     return next({
