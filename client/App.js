@@ -7,6 +7,7 @@ import Messages from './components/messages';
 import DirMessage from './components/directMessage';
 import Thread from './components/thread';
 import NavBar from './components/navbar';
+import Signup from './components/signUp';
 
 function App() {
   const [state, updateState] = useState({
@@ -24,9 +25,9 @@ function App() {
         <Route path='/login'>
           <Login />
         </Route>
-        {/* <Route path='/signup'>
+        <Route path='/signup'>
           <Signup />
-        </Route> */}
+        </Route>
         <Route exact path='/messages'>
           <Messages />
         </Route>
