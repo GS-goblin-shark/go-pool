@@ -1,11 +1,8 @@
 const express = require('express');
-const { getThread } = require('../controllers/threadController');
-
 const threadController = require('../controllers/threadController');
 
 const router = express.Router();
-
-const { createPost } = threadController;
+const { createPost, getUpcomingEvents } = threadController;
 
 router.post('/', createPost, (req, res) => {
   return res
