@@ -17,11 +17,11 @@ messageController.getMessages = async (req, res, next) => {
   try {
     const userID = await db.query(queryUser, paramUser);
     userID.rows[0].email === from_email
-      ? (from_userid = userID.rows[0].email)
-      : (to_userid = userID.rows[0].email);
+      ? (from_userid = userID.rows[0]._id)
+      : (to_userid = userID.rows[0]._id);
     userID.rows[1].email === from_email
-      ? (from_userid = userID.rows[1].email)
-      : (to_userid = userID.rows[1].email);
+      ? (from_userid = userID.rows[1]._id)
+      : (to_userid = userID.rows[1]._id);
     paramMessages.push(from_userid);
     paramMessages.push(to_userid);
     console.log(paramMessages);
