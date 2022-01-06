@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Calendar from 'react-calendar'
 import moment from 'moment';
 import NewEventModal from './NewEvent';
+import ThreadCard from './threadTitleCard';
 
 function Dashboard() {
   const [dateState, setDateState] = useState(new Date())
@@ -21,7 +22,15 @@ function Dashboard() {
         </div>
          <NewEventModal/>
       </div>
-      <h1>Upcoming Events</h1>
+      <div id='upcoming-events-container'>
+        <h1>Upcoming Events</h1>
+        <div id='thread-card-container'>
+          <ThreadCard/>
+          <ThreadCard/>
+          <ThreadCard/>
+        </div>
+      </div>
+
     </div>
   );
 }
