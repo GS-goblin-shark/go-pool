@@ -45,7 +45,7 @@ module.exports = {
     proxy: {
       '/api': 'http://localhost:3000',
       '/thread': 'http://localhost:3000',
-      '/message': 'http://localhost:3000',
+      '/db/message': 'http://localhost:3000',
     },
   },
   resolve: {
