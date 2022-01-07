@@ -3,7 +3,9 @@ const { db } = require("../models/sessionModel");
 const threadReplyController = {};
 
 threadReplyController.postThreadReply = async (req, res, next) => {
-    const { email, thread, date_posted, thread_id, response } = req.body;
+    const { email, thread, date_posted, thread_id } = req.body;
+
+    console.log(req.body)
 
     const queryEmail = 'SELECT u._id FROM users u WHERE email = $1;';
     const emailParams = [email];
