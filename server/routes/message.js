@@ -3,12 +3,17 @@ const express = require('express');
 const messageController = require('../controllers/messageController');
 
 const router = express.Router();
+const { getMessages, storeMessage, getUsers } = messageController;
 
-router.get('/', (req, res) => {
-  return res.sendStatus(200);
+router.get('/users', getUsers, (req, res) => {
+  return res.status(200).json({ users: res.locals.users });
 });
 
-router.post('/', (req, res) => {
+router.get('/', getMessages, (req, res) => {
+  return res.status(200).json({ messages: res.locals.messageBetween });
+});
+
+router.post('/', storeMessage, (req, res) => {
   return res.sendStatus(200);
 });
 
