@@ -1,14 +1,12 @@
 $light-blue: #e3f2fd;
+$lt-prim: lighten(#007bff, 45%);
 
-.navbar{
-    background-color: $light-blue !important;
-}
 
-.threadCard{
-  background-color: lightblue;
-  height: 100px;
-  width: 200px;
-  margin: 20px;
+
+body{
+  background-image: linear-gradient(white, $lt-prim);
+  height: 100%;
+  background-attachment: fixed;
 }
 
 input{
@@ -30,13 +28,6 @@ h2{
   margin: 1em;
 }
 
-button {
-  background-color: $light-blue;
-  border: none;
-  border-radius: 5px;
-  padding: 8px;
-}
-
 // Dashboard page
 #dashboardComponent{
   margin: 2em;
@@ -44,7 +35,7 @@ button {
 
 #calendar-div{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 //new event modal
@@ -62,6 +53,36 @@ button {
   flex-direction: column;
 }
 
+#modal-close-button{
+  border: none;
+  background-color: transparent;
+}
+
+//upcoming events
+#upcoming-events-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#thread-card-container{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.thread-card{
+  margin: 5px;
+  text-align: left;
+}
+
+//calendar events
+#selected-day-events{
+  display: flex;
+  flex-direction: column;
+  max-width: 40vw;
+}
+
 //login page
 #login-page{
     display: flex;
@@ -69,6 +90,11 @@ button {
     justify-content: center;
     align-items: center;
     margin: 10px;
+}
+
+.login-input{
+  width: 40vw;
+  min-width: 300px;
 }
 
 
@@ -79,7 +105,7 @@ button {
     max-width: 100%;
     background: white;
     border: 1px solid #a0a096;
-    border-radius: 5px;
+    border-radius: 10px;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.125em;
   }
@@ -171,7 +197,7 @@ button {
     background-color: #e6e6e6;
   }
   .react-calendar__tile--now {
-    background: #ffff76;
+    background: $lt-prim;
     border-radius: 50%;
   }
   .react-calendar__tile--now:enabled:hover,
