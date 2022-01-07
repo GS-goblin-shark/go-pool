@@ -1,31 +1,31 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import Modal from 'react-modal';
 
-function DirMessage() {
+
+function DirMessage(user) {
+
 
   const [state, setState] = useState({
-    openDM: true,
-    submitted: false,
-    messages: [],
-    // sender: '',
-    // recipient: '',
-    // date: '',
-    // message: '',
+    sender: user,
+    recipient: '',
+    messages: []
   })
 
+
+  useEffect(() => {
+      // GET request using axios inside useEffect React hook
+      
+      axios.get(`/db/message/?to_email=e@e&from_email=w@w.com`)
+      //[{id, from_email, to_email, date, message}]
+          .then(response => 
+            
+            console.log(response.data),
   
-
-  // useEffect(() => {
-  //   const axios = require('axios');
-
-  //   const res = await axios.get('/api/messages');
-
-  //   console.log(res.data.args);
-
-  //   setState({...state, messages: res.data.args});
-
-  // }) 
+            setState({...state, messages: response.data})
+          )
+          
+  }, []);
+  
 
   //response: array of obj
   //to_email: str
@@ -34,24 +34,10 @@ function DirMessage() {
   //message: str
 
 
-  useEffect(() => {
-    // GET request using axios inside useEffect React hook
-    axios.get('/api/message')
-        .then(response => 
-          //use the data from the response to setState 
-          setState({...state, 
-            sender: response.data.from_email,
-            recipient: response.data.to_emai,
-            date: response.data.date,
-            message: []
-          })
-          )
-
-// empty dependency array means this effect will only run once (like componentDidMount in classes)
-}, []);
-
   const handleOnChange = e => {
-    setState({...state, [e.target.name]: e.target.value})
+    const newDM = e.target.value;
+    state.messages.push(newDM);
+    setState({...state)
     //console.log(state)
   }
 
@@ -60,10 +46,10 @@ function DirMessage() {
 
       //console.log('submitted')
 
-      axios.post('/api/message', {
+      axios.post('/db/message', {
         from_email: state.sender,
         to_email: state.recipient,
-        message: state.message
+        message: state.message[state.message.length - 1]
       })
       .then(function (response) {
         console.log(response);
@@ -72,6 +58,21 @@ function DirMessage() {
       .catch(function (error) {
         console.log(error);
       });
+
+      
+    useEffect(() => {
+    //reload the DMs with this specific recipient
+    
+    axios.get(`/db/message/?to_email=e@e&from_email=w@w.com`)
+    //[{id, from_email, to_email, date, message}]
+        .then(response => 
+          
+          console.log(response.data),
+
+          setState({...state, messages: response.data})
+        )
+        
+    }, []);
   }
   //make a get request with axios to retrieve data that matches the recipient
 
@@ -79,41 +80,28 @@ function DirMessage() {
   
   //send a post request with axios to the DB with the recipient matched
 
-
+  let dirMessages = [];
+  
+  state.messages.forEach(message => {
+    dirMessages.push(<div messageId={id}>
+      <h4>{message.to_email}</h4>
+      <p>{message.message}</p>
+      <h4>{message.date}</h4>
+    </div>)
+  })
 
   return (
     <div>
       <h1>This is a dm thread</h1>
-      <Modal 
-                className="Modal__Bootstrap modal-dialog"
-                isOpen={modalIsOpen} 
-                onRequestClose={closeModal} 
-            >
-                <div className="modal-content">
-                    
-                    <div className="modal-header">
-                        <h4 className="modal-title">Create a New Post</h4>
-                        <button type="button" className="close" onClick={closeModal}>
-                            <span aria-hidden="true">&times;</span>
-                            <span className="sr-only"></span>
-                        </button>
-                    </div>
-                    {!submitted &&
-                        <div> 
-                        <div className="modal-body" id="new-thread-form">
-                            <label>Recipient: {state.recipient}</label>
-                            <label>Message:
-                            <input type='text' onChange={handleOnChange} placeholder='Enter DM here' required></input>
-                            </label>
-                        </div>
-                        <div className="modal-footer">
-                        <button type="button" className="btn btn-primary" onClick={sendDM}>Send DM</button>
-                        </div>
-                        </div>
-                    }
-                    {submitted && <p>Your DM was sent!</p>}
-                </div>
-            </Modal>
+      <dirMessages />
+      <form>
+      <input placeholder='Enter DM here'
+          name='message'
+          onChange={handleOnChange}
+          required>
+      </input>
+      <button onClick={sendDM()}>Send</button>
+      </form>
     </div>
   );
 }

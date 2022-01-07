@@ -29,7 +29,7 @@ function App() {
           <Signup />
         </Route>
         <Route exact path='/messages'>
-          <Messages/>
+          <Messages user={userId}/>
         </Route>
         <Route path='/messages/:id'>
           <DirMessage />
