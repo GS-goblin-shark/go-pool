@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 function DirMessage() {
 
   const [state, setState] = useState({
-    openModal: true,
+    openDM: true,
     submitted: false,
     messages: [],
     // sender: '',
@@ -43,7 +43,7 @@ function DirMessage() {
             sender: response.data.from_email,
             recipient: response.data.to_emai,
             date: response.data.date,
-            message: 
+            message: []
           })
           )
 
