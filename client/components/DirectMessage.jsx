@@ -37,7 +37,7 @@ function DirMessage(user) {
   const handleOnChange = e => {
     const newDM = e.target.value;
     state.messages.push(newDM);
-    setState({...state)
+    setState({...state})
     //console.log(state)
   }
 

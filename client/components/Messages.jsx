@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import DirectMessage from 'DirectMessage';
+import DirMessage from './DirectMessage';
 import axios from 'axios';
 //import Modal from 'react-modal';
 
@@ -46,7 +46,7 @@ state.recipients.forEach(recipient => {
     <div>
       <h1>This is the messages page</h1>
       <dmButtons />
-      {state.currentRecipient !== undefined && <DirectMessage user={state.user}/>}
+      {state.currentRecipient !== undefined && <DirMessage user={state.user}/>}
     </div>
   );
 }

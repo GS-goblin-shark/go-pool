@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Dashboard from './components/dashboard';
 import Login from './components/login';
 import Messages from './components/messages';
-import DirMessage from './components/directMessage';
+import DirMessage from './components/DirectMessage';
 import Thread from './components/thread';
 import NavBar from './components/navbar';
 import Signup from './components/signUp';
@@ -29,7 +29,7 @@ function App() {
           <Signup />
         </Route>
         <Route exact path='/messages'>
-          <Messages user={userId}/>
+          <Messages />
         </Route>
         <Route path='/messages/:id'>
           <DirMessage />
