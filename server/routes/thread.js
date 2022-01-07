@@ -19,7 +19,7 @@ router.get('/upcoming', getUpcomingEvents, (req, res) => {
     .json(res.locals.upcomingEvents)
 });
 
-router.get('/', getThreadMessages, (req, res) => {
+router.get('/:id', getThreadMessages, (req, res) => {
   return res
     .status(200)
     .json(res.locals.threadMessages)
