@@ -12,7 +12,12 @@ messageController.getMessages = async (req, res, next) => {
   const paramUserID = [from_email, to_email];
 
   const queryMessages =
-    "SELECT _id, from_user_id, to_user_id, TO_CHAR(date, 'MM/DD/YYYY HH24:MM:SS') AS date, message  FROM messages WHERE from_user_id = $1 AND to_user_id = $2 or from_user_id = $2 AND to_user_id = $1";
+    "\
+    SELECT m._id, u1.email from_email, u1.first_name from_first_name, u2.first_name to_first_name, u2.email to_email, TO_CHAR(m.date, 'MM/DD/YYYY HH24:MM:SS') AS date, m.message  \
+    FROM messages m\
+    LEFT JOIN users u1 ON u1._id = m.from_user_id\
+    LEFT JOIN users u2 ON u2._id = m.to_user_id\
+    WHERE from_user_id = $1 AND to_user_id = $2 or from_user_id = $2 AND to_user_id = $1;";
   const paramMessages = [];
 
   try {
