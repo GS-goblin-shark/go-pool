@@ -35,7 +35,7 @@ h2{
 
 #calendar-div{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 //new event modal
@@ -74,6 +74,13 @@ h2{
 .thread-card{
   margin: 5px;
   text-align: left;
+}
+
+//calendar events
+#selected-day-events{
+  display: flex;
+  flex-direction: column;
+  max-width: 40vw;
 }
 
 //login page

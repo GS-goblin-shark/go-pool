@@ -29,14 +29,24 @@ function Dashboard() {
       );        
   });
 
+  const todaysEvents = upcoming['thread'].map((event) => {
+    if(event.date == moment(dateState).format('MMM DD')){
+            return(
+        <ThreadCard event_name={event.event_name}></ThreadCard>
+      );     
+    }  
+  });
+
   return (
     <div id='dashboardComponent'>
       <h2>Select a date to view events:</h2>
       <div id='calendar-div'>
         <Calendar value={dateState} onChange={changeDate}/>
         <div id='calendar-event-display'>
-        <p>Events for {moment(dateState).format('MMM Do YYYY')}</p>
-        {/* events should load here */}
+        <p>Events for {moment(dateState).format('MMM Do')}</p>
+        <div id = 'selected-day-events'>
+          {todaysEvents}
+        </div>
         </div>
          <NewEventModal/>
       </div>
