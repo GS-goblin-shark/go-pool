@@ -8,25 +8,40 @@ import DirMessage from './components/directMessage';
 import Thread from './components/thread';
 import NavBar from './components/navbar';
 import Signup from './components/signUp';
+import Home from './components/Home'
 
 function App() {
-  const [state, updateState] = useState({
-    userId: '',
-    status: false,
-  });
 
-  return (
-    <div>
-      <NavBar/>
-      <Switch>
+  const loggedIn = sessionStorage.getItem('loggedIn')
+
+  if(!loggedIn){
+    return(
+      <div>
+        <NavBar/>
+        <Switch>
         <Route exact path='/'>
-          <Dashboard />
+          <Home/>
         </Route>
         <Route path='/login'>
           <Login />
         </Route>
         <Route path='/signup'>
           <Signup />
+        </Route>
+        <Route><Login/></Route>
+        </Switch>
+      </div>
+    )
+  }
+  else{
+    return(
+      <div>
+        <NavBar/>
+        <Route exact path='/'>
+          <Home/>
+        </Route>
+        <Route path='/dashboard'>
+          <Dashboard />
         </Route>
         <Route exact path='/messages'>
           <Messages />
@@ -37,9 +52,9 @@ function App() {
         <Route path='/thread/:id'>
           <Thread />
         </Route>
-      </Switch>
-    </div>
-  );
+      </div>
+    )
+  }
 }
 
 export default App;

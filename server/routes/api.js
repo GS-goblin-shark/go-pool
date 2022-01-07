@@ -14,7 +14,7 @@ router.post('/signup', signup, (req, res) => {
   res.status(200).send('Account successfully created');
 });
 
-router.post('/login', login, startSession, setSSIDCookie, (req, res) => {
+router.post('/login', login, setSSIDCookie, (req, res) => {
   // need to add set cookie middleware after login middleware
   // steps: login middleware to verify user data in db, session middleware, cookie middleware to set cookie
   // inputs: email, password
