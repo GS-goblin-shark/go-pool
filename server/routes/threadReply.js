@@ -6,8 +6,7 @@ const { postThreadReply } = threadReplyController;
 
 router.post('/', postThreadReply, (req, res) => {
     return res
-    .status(200)
-    .json(res.locals.threadRes)
+    .sendStatus(200);
 });
 
 module.exports = router;

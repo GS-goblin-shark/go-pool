@@ -1,11 +1,11 @@
-const { db } = require("../models/sessionModel");
+const db = require('../models/userModel');
 
 const threadReplyController = {};
 
 threadReplyController.postThreadReply = async (req, res, next) => {
     const { thread, date_posted, email, thread_id, event_name } = req.body;
 
-    console.log(req.body)
+    // console.log(req.body)
 
     const queryEmail = 'SELECT users._id FROM users WHERE email = $1;';
     const emailParams = [email];
@@ -17,17 +17,17 @@ threadReplyController.postThreadReply = async (req, res, next) => {
     const resParams = [thread, date_posted, thread_id];
 
     try {
-        const userID = await db.query(queryEmail, emailParams);
-        resParams.push(userID.rows[0]._id);
-        console.log('userID: ', userId)
+        const userId = await db.query(queryEmail, emailParams);
+        resParams.push(userId.rows[0]._id);
+        // console.log('userId: ', userId.rows[0]._id)
 
         const eventId = await db.query(queryEvent, eventParams);
         resParams.push(eventId.rows[0]._id);
-        console.log('eventID: ', eventId)
+        // console.log('eventID: ', eventId.rows[0]._id)
 
         const threadRes = await db.query(queryRes, resParams);
         res.locals.threadRes = threadRes.rows[0];
-        console.log(threadRes);
+        console.log(threadRes.rows[0]);
 
         return next();
     } catch (err) {
@@ -40,4 +40,4 @@ threadReplyController.postThreadReply = async (req, res, next) => {
     }
 };
 
-module.exports = threadController;
+module.exports = threadReplyController;
