@@ -28,6 +28,14 @@ h2{
   margin: 1em;
 }
 
+#logout {
+  margin-left: auto;
+}
+
+#logout-button{
+  justify-self: flex-end;
+}
+
 // Dashboard page
 #dashboardComponent{
   margin: 2em;

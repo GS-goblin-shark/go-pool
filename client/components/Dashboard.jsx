@@ -46,10 +46,10 @@ function Dashboard() {
       <div id='calendar-div'>
         <Calendar value={dateState} onChange={changeDate}/>
         <div id='calendar-event-display'>
-        <p>Events for {moment(dateState).format('MMM Do')}</p>
-        <div id = 'selected-day-events'>
-          {todaysEvents}
-        </div>
+          <p>Events for {moment(dateState).format('MMM Do')}</p>
+          <div id = 'selected-day-events'>
+            {todaysEvents}
+          </div>
         </div>
          <NewEventModal/>
       </div>

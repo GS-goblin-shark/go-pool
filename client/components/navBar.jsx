@@ -1,7 +1,33 @@
 import React from 'react';
 
 const NavBar = () => {
-    return(
+    const loggedIn = sessionStorage.getItem('loggedIn')
+
+    const login = () => {
+        window.location.href = '/login';
+    }
+
+    const logout = () => {
+        sessionStorage.clear();
+        window.location.href = '/';
+    }
+
+    if(!loggedIn){
+        return(
+            <div>
+                <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div className="container-fluid">
+                    <a className="navbar-brand" href="/">Go-Pool</a>
+                    <div className="navbar-nav">
+                        <button className="btn btn-secondary" onClick={login}>Login</button>
+                    </div>
+                </div>
+                </nav>
+            </div>
+        )
+    }
+    else{
+        return(
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
@@ -13,13 +39,18 @@ const NavBar = () => {
                 <div className="navbar-nav">
                     <a className="nav-link" href="/dashboard">Dashboard</a>
                     <a className="nav-link" href="/messages">Messages</a>
-                    <a className="nav-link" href="/login">Login</a>
+                </div>
+                <div className="navbar-nav" id='logout'>
+                    <button id='logout-button' className="btn btn-secondary" onClick= {logout}>Log Out</button>
                 </div>
                 </div>
             </div>
             </nav>
         </div>
-    )
+         )
+    }
+
+
 }
 
 export default NavBar;
