@@ -9,6 +9,8 @@ function Dashboard() {
   const [dateState, setDateState] = useState(new Date())
   const [upcoming, setUpcoming] = useState({thread: []})
 
+  const currentUserEmail = sessionStorage.getItem('email')
+
   const changeDate = (e) => {
     setDateState(e)
   }
@@ -39,14 +41,15 @@ function Dashboard() {
 
   return (
     <div id='dashboardComponent'>
+      <h1>Hello {currentUserEmail}!</h1>
       <h2>Select a date to view events:</h2>
       <div id='calendar-div'>
         <Calendar value={dateState} onChange={changeDate}/>
         <div id='calendar-event-display'>
-        <p>Events for {moment(dateState).format('MMM Do')}</p>
-        <div id = 'selected-day-events'>
-          {todaysEvents}
-        </div>
+          <p>Events for {moment(dateState).format('MMM Do')}</p>
+          <div id = 'selected-day-events'>
+            {todaysEvents}
+          </div>
         </div>
          <NewEventModal/>
       </div>

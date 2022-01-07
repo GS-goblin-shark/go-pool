@@ -9,11 +9,14 @@ function NewEventModal(){
     const [startDate, setStartDate] = useState(new Date());
     const [eventDate, setEventDate] = useState('');
     const [modalIsOpen, setIsOpen] = useState(false);
-    const [emailValue, setEmailValue] = useState('email@email.com');
+    //const [emailValue, setEmailValue] = useState('email@email.com');
     const [eventName, setEventName] = useState('');
     const [location, setLocation] = useState('');
     const [thread, setThread] = useState('');
     const [submitted, setSubmitted] = useState(false);
+
+    //retrieve the current user's email from the session storage
+    const currentUserEmail = sessionStorage.getItem('email')
 
     //get today's date and format it for backend
     const today = new Date();
@@ -59,13 +62,11 @@ function NewEventModal(){
             location: location, 
             thread: thread, 
             date_posted: todayFormatted, 
-            email: emailValue
+            email: currentUserEmail
         }
 
         axios.post('/thread', data)
         .then((res) => {
-          console.log(res)
-          console.log('Post successfully created!');
           setSubmitted(true);
         })
         .catch(e => {
