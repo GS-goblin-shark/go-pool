@@ -15,6 +15,7 @@ CREATE TABLE public.threads (
     "date" DATE NOT NULL,
     "event_id" bigint,
     "user_id" bigint,
+    "thread_id" bigint,
     PRIMARY KEY ("_id") 
 );
 
