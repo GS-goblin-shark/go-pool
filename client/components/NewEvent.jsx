@@ -75,8 +75,7 @@ function NewEventModal(){
 
     return(
         <div id='new-event'>
-            <p>Don't see your event on the calendar?</p>
-            <button type="button" className="btn btn-primary" id="thread-modal-button" onClick={openModal}>Start a new post</button>
+            <button type="button" className="btn btn-primary" id="thread-modal-button" onClick={openModal}>Add a new post</button>
             <Modal 
                 className="Modal__Bootstrap modal-dialog"
                 isOpen={modalIsOpen} 
@@ -86,7 +85,7 @@ function NewEventModal(){
                     
                     <div className="modal-header">
                         <h4 className="modal-title">Create a New Post</h4>
-                        <button type="button" className="close" onClick={closeModal}>
+                        <button type="button" className="close" id='modal-close-button' onClick={closeModal}>
                             <span aria-hidden="true">&times;</span>
                             <span className="sr-only"></span>
                         </button>
@@ -101,7 +100,7 @@ function NewEventModal(){
                             <label>Location</label>
                             <input type='text' onChange={onLocationChange}></input>
                             <label>Message</label>
-                            <textarea onChange={onThreadChange}></textarea>
+                            <textarea rows='5' onChange={onThreadChange}></textarea>
                         </div>
                         <div className="modal-footer">
                         <button type="button" className="btn btn-primary" onClick={CreateNewThread}>Create Post</button>

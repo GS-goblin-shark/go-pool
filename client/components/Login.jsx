@@ -34,11 +34,11 @@ function Login() {
     <div id='login-page'>
       <div className='form-group' id='login-form'>
         <p>Email</p>
-        <input type='text' placeholder='email' onChange={onEmailChange}/>
+        <input class="form-control login-input" type='text' onChange={onEmailChange}/>
         <p>Password</p>
-        <input type='password' placeholder='password' onChange={onPasswordChange}/>
+        <input class="form-control login-input" type='password' onChange={onPasswordChange}/>
       </div>
-      <button id='loginButton' type='submit' onClick={login}>Log In</button>
+      <button className="btn btn-primary" id='loginButton' type='submit' onClick={login}>Log In</button>
       {hasError && <p>Invalid Email or Password</p>}
       <p>Don't have an account?  Click <Link id='signUp-link' to={'/signup'}>here</Link> to sign up!</p>
     </div>
