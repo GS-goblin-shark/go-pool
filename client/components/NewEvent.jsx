@@ -69,6 +69,7 @@ function NewEventModal(){
 
         axios.post('/db/thread', data)
         .then((res) => {
+            console.log(res)
           setSubmitted(true);
         })
         .catch(e => {
@@ -77,7 +78,8 @@ function NewEventModal(){
    }
 
    const route = () => {
-    window.location.href = '/thread/' + event_id;
+       console.log('clicked')
+    //window.location.href = '/thread/' + event_id;
   }
   
     return(
