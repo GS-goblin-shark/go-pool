@@ -21,12 +21,21 @@ function Thread() {
   //retrieve the current user's email from the session storage
   const currentUserEmail = sessionStorage.getItem('email')
   
+  const sortMessages = (a,b) =>{
+    if(parseInt(a.thread_id) === parseInt(b.thread_id)){
+      return a._id - b._id;
+    }
+    return parseInt(a.thread_id) < b.thread_id ? -1 : 1;
+  }
+
   const loadData = () => {
     axios.get(`/db/thread/${path_id}`)
     .then((res) => {
-      console.log(res.data)
+      const messageArray = res.data
+      const sorted = messageArray.sort(sortMessages)
+      console.log(sorted)
       setEventName(res.data[0]['event_name'])
-      setPosts({posts: res.data})
+      setPosts({posts: sorted})
     })
     .catch(e => {
       console.log(e);
