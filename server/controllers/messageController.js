@@ -103,7 +103,7 @@ messageController.storeMessage = async (req, res, next) => {
   const paramUserID = [from_email, to_email];
 
   const queryMessages =
-    'INSERT INTO messages (date, message, from_user_id, to_user_id) VALUES ($1, $2, $3, $4) RETURNING *';
+    'INSERT INTO messages (date, message, from_user_id, to_user_id) VALUES ($1, $2, $3, $4) RETURNING date, message, from_user_id, to_user_id';
   const paramMessages = [timeNow, message];
 
   try {
