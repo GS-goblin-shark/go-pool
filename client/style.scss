@@ -39,6 +39,10 @@ h2{
 // Dashboard page
 #dashboardComponent{
   margin: 2em;
+
+  p{
+    text-align: center;
+  }
 }
 
 #calendar-div{
@@ -117,6 +121,16 @@ h2{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.thread-page-header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#delete-thread-button{
+  margin-top: 10px;
 }
 
 #thread-container{

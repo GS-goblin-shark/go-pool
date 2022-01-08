@@ -79,6 +79,7 @@ function NewEventModal(){
    const route = () => {
     window.location.href = '/thread/' + event_id;
   }
+  
     return(
         <div id='new-event'>
             <button type="button" className="btn btn-secondary" id="thread-modal-button" onClick={openModal}>Add a new post</button>
