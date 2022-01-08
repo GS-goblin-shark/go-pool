@@ -89,4 +89,23 @@ threadController.getThreadMessages = async (req, res, next) => {
   }
 };
 
+threadController.deleteThread = async (req, res, next) => {
+
+  const eventId = req.params.eventid
+  const deleteParam = [eventId];
+  const queryDeleteThread = 'DELETE FROM threads WHERE event_id = $1;';
+
+  try {
+    await db.query(queryDeleteThread, deleteParam);
+    return next()
+  } catch (err) {
+    return next({
+      log: `Error in threadController.deleteThread: ${err}`,
+      message: {
+        err: `Error in the backend from threadController.deleteThread`
+      }
+    });
+  }
+};
+
 module.exports = threadController;
