@@ -40,4 +40,23 @@ threadReplyController.postThreadReply = async (req, res, next) => {
     }
 };
 
+threadReplyController.deleteThreadReply = async (req, res, next) => {
+
+    const id = req.params.id;
+    const deleteReplyParam = [id];
+    const queryDeleteRes = 'DELETE FROM threads WHERE _id = $1;';
+
+    try {
+        await db.query(queryDeleteRes, deleteReplyParam);
+        return next()
+    } catch (err) {
+        return next({
+            log: `Error in threadReplyController.deleteThreadReply: ${err}`,
+            message: {
+              err: `Error in the backend from threadReplyController.deleteThreadReply`
+            }
+        });
+    }
+};
+
 module.exports = threadReplyController;
