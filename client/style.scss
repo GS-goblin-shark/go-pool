@@ -1,10 +1,10 @@
 $light-blue: #e3f2fd;
+$button-blue: #007bff;
 $lt-prim: lighten(#007bff, 45%);
 
 
-
-body{
-  background-image: linear-gradient(white, $lt-prim);
+html, body, #root{
+  background-image: linear-gradient($lt-prim, lighten($button-blue, 20%));
   height: 100%;
   background-attachment: fixed;
 }
@@ -105,6 +105,33 @@ h2{
   min-width: 300px;
 }
 
+//thread display page
+.thread-page{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#thread-container{
+  min-width: 60%;
+  padding: 10px;
+}
+
+.post{
+  background-color: white;
+  border-radius: 5px;
+  padding: 1em;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  strong{
+    margin-right: 20px;
+  }
+}
+
+.post-header{
+  display: flex;
+}
 
 
 //react-calendar styling

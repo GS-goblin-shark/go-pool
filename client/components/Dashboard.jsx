@@ -4,6 +4,7 @@ import moment from 'moment';
 import NewEventModal from './NewEvent';
 import ThreadCard from './threadTitleCard';
 import axios from 'axios';
+import {Link} from 'react-router-dom'
 
 function Dashboard() {
   const [dateState, setDateState] = useState(new Date())
@@ -27,14 +28,14 @@ function Dashboard() {
 
   const eventList = upcoming['thread'].map((event) => {
       return(
-        <ThreadCard date={event.date} event_name={event.event_name}></ThreadCard>
+        <ThreadCard event_id= {event._id} date={event.date} event_name={event.event_name}></ThreadCard>
       );        
   });
 
   const todaysEvents = upcoming['thread'].map((event) => {
     if(event.date == moment(dateState).format('MMM DD')){
             return(
-        <ThreadCard event_name={event.event_name}></ThreadCard>
+        <ThreadCard event_id= {event._id} event_name={event.event_name}></ThreadCard>
       );     
     }  
   });
@@ -42,6 +43,9 @@ function Dashboard() {
   return (
     <div id='dashboardComponent'>
       <h1>Hello {currentUserEmail}!</h1>
+
+      <Link to={'/thread/4'}>Thread</Link>
+
       <h2>Select a date to view events:</h2>
       <div id='calendar-div'>
         <Calendar value={dateState} onChange={changeDate}/>
