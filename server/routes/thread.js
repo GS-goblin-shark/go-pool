@@ -2,7 +2,7 @@ const express = require('express');
 const threadController = require('../controllers/threadController');
 
 const router = express.Router();
-const { createPost, getUpcomingEvents, getThreadMessages } = threadController;
+const { createPost, getUpcomingEvents, getThreadMessages, deleteThread } = threadController;
 
 router.post('/', createPost, (req, res) => {
   return res
@@ -24,5 +24,11 @@ router.get('/:id', getThreadMessages, (req, res) => {
     .status(200)
     .json(res.locals.threadMessages)
 });
+
+router.delete('/:eventid', deleteThread, (req, res) => {
+  return res
+    .status(200)
+    .send('Thread successfully deleted')
+})
 
 module.exports = router;
