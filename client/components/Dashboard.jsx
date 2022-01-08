@@ -17,7 +17,7 @@ function Dashboard() {
   }
 
   useEffect(() => {
-    axios.get('/thread/upcoming')
+    axios.get('/db/thread/upcoming')
     .then((res) => {
       setUpcoming({thread: res.data})
     })
@@ -43,9 +43,6 @@ function Dashboard() {
   return (
     <div id='dashboardComponent'>
       <h1>Hello {currentUserEmail}!</h1>
-
-      <Link to={'/thread/4'}>Thread</Link>
-
       <h2>Select a date to view events:</h2>
       <div id='calendar-div'>
         <Calendar value={dateState} onChange={changeDate}/>

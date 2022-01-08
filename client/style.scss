@@ -79,10 +79,7 @@ h2{
   width: 50%;
 }
 
-.thread-card{
-  margin: 5px;
-  text-align: left;
-}
+
 
 //calendar events
 #selected-day-events{
@@ -133,6 +130,24 @@ h2{
   display: flex;
 }
 
+.thread-card{
+  margin: 5px;
+  text-align: left;
+}
+
+.reply-box{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 1em;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.reply-input{
+  border-radius: 5px;
+}
 
 //react-calendar styling
 .react-calendar {
