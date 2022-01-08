@@ -18,6 +18,7 @@ function Dashboard() {
   useEffect(() => {
     axios.get('/db/thread/upcoming')
     .then((res) => {
+      console.log(res.data)
       setUpcoming({thread: res.data})
     })
     .catch(e => {

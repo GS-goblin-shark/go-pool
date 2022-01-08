@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import UserInfo from './userInfo';
 
 function Thread() {
   const [message, setMessage] = useState('');
@@ -76,7 +77,7 @@ function Thread() {
     return(
       <div className='post'>
       <div className='post-header'>
-        <p><strong>{msg['first_name'] + ' ' + msg['last_name']}</strong></p>
+        <UserInfo username={msg['first_name'] + ' ' + msg['last_name']}></UserInfo>
         <p>{msg['date']}</p>
       </div>
       <p className='post-content'>{msg['thread']}</p>

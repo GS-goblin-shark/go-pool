@@ -161,6 +161,19 @@ h2{
   margin-left: 10px;
 }
 
+//user info modal
+.userModal{
+  border: none;
+}
+
+.modal-content{
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
 //react-calendar styling
 .react-calendar {
     width: 350px;
