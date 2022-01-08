@@ -36,6 +36,18 @@ h2{
   justify-self: flex-end;
 }
 
+//signup page
+#signup-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  button{
+    margin-bottom: 3em;
+  }
+}
+
 // Dashboard page
 #dashboardComponent{
   margin: 2em;
