@@ -50,6 +50,15 @@ h2{
 #new-event{
   display: flex;
   flex-direction: column;
+  margin-top: 5em;
+}
+
+.modal-header{
+  width: 100%;
+}
+
+.modal-form-open{
+  width: 100%;
 }
 
 #thread-modal-button{

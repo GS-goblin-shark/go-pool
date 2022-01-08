@@ -51,8 +51,9 @@ function Dashboard() {
           <div id = 'selected-day-events'>
             {todaysEvents}
           </div>
+          <NewEventModal/>
         </div>
-         <NewEventModal/>
+         
       </div>
       <div id='upcoming-events-container'>
         <h1>Upcoming Events</h1>
