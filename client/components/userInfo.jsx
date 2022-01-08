@@ -9,6 +9,19 @@ function UserInfo(props) {
     const [address, setAddress] = useState('');
     const [location, setLocation] = useState({});
 
+    const apiIsLoaded = (map, maps, center) => {
+        const circle = new google.maps.Circle({
+          strokeColor: "#FF0000",
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: "#FF0000",
+          fillOpacity: 0.3,
+          map,
+          center: center,
+          radius: 1000
+        });
+      };
+
     const getAddress = () =>{
         axios.get(`/api/${props.email}`)
         .then((res) => {
@@ -51,11 +64,12 @@ function UserInfo(props) {
                 <h4>{props.username}</h4>
                 <h4>{props.email}</h4>
                 <button className='btn btn-primary'>Send Private Message</button>
-                <div className= 'map' style={{height: '500px', width: '100%'}}>
+                <div className= 'map' >
                     <GoogleMapReact
                     bootstrapURLKeys={{ key: 'AIzaSyDR7USipEdGyGlmd0ttJVMgEvrgbkFKTKU' }}
                     defaultCenter={location}
-                    defaultZoom = {15}
+                    defaultZoom = {13}
+                    onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps, location)}
                     >
                     </GoogleMapReact>
                 </div>
