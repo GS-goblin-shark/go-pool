@@ -4,7 +4,6 @@ import moment from 'moment';
 import NewEventModal from './NewEvent';
 import ThreadCard from './threadTitleCard';
 import axios from 'axios';
-import {Link} from 'react-router-dom'
 
 function Dashboard() {
   const [dateState, setDateState] = useState(new Date())

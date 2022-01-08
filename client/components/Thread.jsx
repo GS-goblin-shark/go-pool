@@ -6,6 +6,7 @@ function Thread() {
   const [firstPost, setFirstPost] = useState({});
   const [message, setMessage] = useState('');
   const [eventName, setEventName] = useState('');
+  const [replyClicked, setReplyClicked] = useState(false);
   
   //get the current event's id
   const pathname= window.location.pathname.split('/');
@@ -38,7 +39,11 @@ function Thread() {
     setMessage(newValue);
   }
 
-  const reply = () =>{
+  const reply = () => {
+    setReplyClicked(true);
+  }
+
+  const addComment = () =>{
     const data = { 
       thread: message,
       date_posted: todayFormatted,
@@ -65,13 +70,14 @@ function Thread() {
             <p><strong>{firstPost['first_name'] + ' ' + firstPost['last_name']}</strong></p>
             <p>{firstPost['date']}</p>
           </div>
-          <p className='post-content'>{firstPost['thread']}</p> 
+          <p className='post-content'>{firstPost['thread']}</p>
+          <button className='post-reply-button btn btn-outline-primary' onClick={reply}>Reply</button>
         </div>
 
         <div className='reply-box'>
           <label>Add a comment:</label>
           <textarea className ='reply-input' rows='5' onChange={onMessageChange}></textarea>
-          <button type="button" className="btn btn-primary" onClick = {reply}>Comment</button>
+          <button type="button" className="btn btn-primary" onClick = {addComment}>Comment</button>
         </div>
 
       </div>
