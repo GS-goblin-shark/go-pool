@@ -6,7 +6,8 @@ const { postThreadReply, deleteThreadReply } = threadReplyController;
 
 router.post('/', postThreadReply, (req, res) => {
     return res
-    .sendStatus(200);
+    .status(200)
+    .json(res.locals.threadRes)
 });
 
 router.delete('/:id', deleteThreadReply, (req, res) => {
