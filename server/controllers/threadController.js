@@ -94,9 +94,11 @@ threadController.deleteThread = async (req, res, next) => {
   const eventId = req.params.eventid
   const deleteParam = [eventId];
   const queryDeleteThread = 'DELETE FROM threads WHERE event_id = $1;';
+  const queryDeleteEvent = 'DELETE FROM event WHERE _id =$1;';
 
   try {
     await db.query(queryDeleteThread, deleteParam);
+    await db.query(queryDeleteEvent, deleteParam);
     return next()
   } catch (err) {
     return next({
