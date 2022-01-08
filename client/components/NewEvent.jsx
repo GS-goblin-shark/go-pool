@@ -76,7 +76,7 @@ function NewEventModal(){
 
     return(
         <div id='new-event'>
-            <button type="button" className="btn btn-primary" id="thread-modal-button" onClick={openModal}>Add a new post</button>
+            <button type="button" className="btn btn-secondary" id="thread-modal-button" onClick={openModal}>Add a new post</button>
             <Modal 
                 className="Modal__Bootstrap modal-dialog"
                 isOpen={modalIsOpen} 
@@ -92,7 +92,7 @@ function NewEventModal(){
                         </button>
                     </div>
                     {!submitted &&
-                        <div> 
+                        <div className='modal-form-open'> 
                         <div className="modal-body" id="new-thread-form">
                             <label>Event Date</label>
                             <DatePicker selected={startDate} onChange={onChange} />
