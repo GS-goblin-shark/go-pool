@@ -6,7 +6,6 @@ import axios from 'axios';
 
 function UserInfo(props) {
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [address, setAddress] = useState('');
   const [location, setLocation] = useState({});
   const [apiKey, setApiKey] = useState('');
 
@@ -33,31 +32,25 @@ function UserInfo(props) {
     axios
       .get(`/api/${props.email}`)
       .then((res) => {
-        setAddress(res.data['address']);
+        Geocode.setApiKey(apiKey);
+        Geocode.fromAddress(res.data.address).then(
+          (res) => {
+            setLocation(res.results[0].geometry.location);
+          },
+          (error) => {
+            console.error(error);
+          }
+        );
       })
       .catch((e) => {
         console.log(e);
       });
   };
 
-  const map = () => {
-    Geocode.setApiKey(apiKey);
-    Geocode.fromAddress(address).then(
-      (response) => {
-        let location = response.results[0].geometry.location;
-        console.log(location);
-        setLocation(location);
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  };
-
   const openModal = () => {
     setIsOpen(true);
     getAddress();
-    map();
+    // map();
   };
 
   const closeModal = () => {
@@ -72,7 +65,8 @@ function UserInfo(props) {
       <Modal
         className='Modal__Bootstrap modal-dialog'
         isOpen={modalIsOpen}
-        onRequestClose={closeModal}>
+        onRequestClose={closeModal}
+        ariaHideApp={false}>
         <div className='modal-content'>
           <h4>{props.username}</h4>
           <h4>{props.email}</h4>
@@ -82,11 +76,13 @@ function UserInfo(props) {
               bootstrapURLKeys={{
                 key: apiKey,
               }}
+              center={location}
               defaultCenter={location}
               defaultZoom={13}
               onGoogleApiLoaded={({ map, maps }) =>
                 apiIsLoaded(map, maps, location)
-              }></GoogleMapReact>
+              }
+              yesIWantToUseGoogleMapApiInternals={true}></GoogleMapReact>
           </div>
         </div>
       </Modal>
