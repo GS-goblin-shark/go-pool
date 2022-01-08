@@ -84,7 +84,50 @@ messageController.getUsers = async (req, res, next) => {
   return next();
 };
 
-messageController.storeMessage = (req, res, next) => {
+messageController.storeMessage = async (req, res, next) => {
+  const { from_email, to_email, message } = req.body;
+  let from_userid, to_userid;
+
+  const timeNow = new Date().toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    hourCycle: 'h24',
+  });
+
+  const queryUserID =
+    'SELECT users._id, users.email FROM users WHERE email = $1 OR email = $2';
+  const paramUserID = [from_email, to_email];
+
+  const queryMessages =
+    'INSERT INTO messages (date, message, from_user_id, to_user_id) VALUES ($1, $2, $3, $4) RETURNING date, message, from_user_id, to_user_id';
+  const paramMessages = [timeNow, message];
+
+  try {
+    const userID = await db.query(queryUserID, paramUserID);
+    userID.rows[0].email === from_email
+      ? (from_userid = userID.rows[0]._id)
+      : (to_userid = userID.rows[0]._id);
+    userID.rows[1].email === from_email
+      ? (from_userid = userID.rows[1]._id)
+      : (to_userid = userID.rows[1]._id);
+    paramMessages.push(from_userid);
+    paramMessages.push(to_userid);
+
+    const messageInput = await db.query(queryMessages, paramMessages);
+    console.log(messageInput.rows);
+  } catch (err) {
+    return next({
+      log: `Error with messageController.storeMessage Error: ${err}`,
+      message: {
+        err: 'Error in the backend. messageController.storeMessage error',
+      },
+    });
+  }
+
   return next();
 };
 
