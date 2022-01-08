@@ -1,10 +1,10 @@
 $light-blue: #e3f2fd;
+$button-blue: #007bff;
 $lt-prim: lighten(#007bff, 45%);
 
 
-
-body{
-  background-image: linear-gradient(white, $lt-prim);
+html, body, #root{
+  background-image: linear-gradient($lt-prim, lighten($button-blue, 20%));
   height: 100%;
   background-attachment: fixed;
 }
@@ -50,6 +50,15 @@ h2{
 #new-event{
   display: flex;
   flex-direction: column;
+  margin-top: 5em;
+}
+
+.modal-header{
+  width: 100%;
+}
+
+.modal-form-open{
+  width: 100%;
 }
 
 #thread-modal-button{
@@ -79,10 +88,7 @@ h2{
   width: 50%;
 }
 
-.thread-card{
-  margin: 5px;
-  text-align: left;
-}
+
 
 //calendar events
 #selected-day-events{
@@ -105,7 +111,79 @@ h2{
   min-width: 300px;
 }
 
+//thread display page
+.thread-page{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+#thread-container{
+  min-width: 60%;
+  padding: 10px;
+}
+
+.post{
+  background-color: white;
+  border-radius: 5px;
+  padding: 1em;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin: 5px;
+
+  strong{
+    margin-right: 20px;
+  }
+}
+
+.post-header{
+  display: flex;
+}
+
+.thread-card{
+  margin: 5px;
+  text-align: left;
+}
+
+.reply-box{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 1em;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.reply-input{
+  border-radius: 5px;
+}
+
+.post-buttons{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.post-reply-button{
+  padding: 2px 10px !important;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+//user info modal
+.modal-content{
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.map{
+  margin: 10px;
+  height: 300px;
+  width: 80%;
+}
 
 //react-calendar styling
 .react-calendar {

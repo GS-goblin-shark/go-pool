@@ -33,6 +33,7 @@ function signUp() {
       })
       .then(function (response) {
         console.log(response);
+        window.location.href = '/login';
       })
       .catch(function (error) {
         console.log(error);
