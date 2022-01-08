@@ -69,8 +69,6 @@ function Thread() {
       thread_id: `${currentThreadId}`
     }
     
-    console.log(data)
-    
     axios.post('/threadreply', data)
     .then((res) => {
       console.log('message sent')

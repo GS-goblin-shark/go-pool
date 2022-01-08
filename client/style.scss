@@ -91,6 +91,13 @@ h2{
   background-color: transparent;
 }
 
+.submitted-form-msg{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 //upcoming events
 #upcoming-events-container{
   display: flex;

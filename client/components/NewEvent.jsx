@@ -65,11 +65,10 @@ function NewEventModal(){
             date_posted: todayFormatted, 
             email: currentUserEmail
         }
-        console.log(data)
 
         axios.post('/db/thread', data)
         .then((res) => {
-            console.log(res)
+            console.log(res.data)
           setSubmitted(true);
         })
         .catch(e => {
@@ -82,6 +81,9 @@ function NewEventModal(){
     //window.location.href = '/thread/' + event_id;
   }
   
+  const refresh = () =>{
+      window.location.href = '/dashboard'
+  }
     return(
         <div id='new-event'>
             <button type="button" className="btn btn-secondary" id="thread-modal-button" onClick={openModal}>Add a new post</button>
@@ -117,9 +119,10 @@ function NewEventModal(){
                         </div>
                     }
                     {submitted && 
-                        <div>
+                        <div className='submitted-form-msg'>
                             <p>Your post was created!</p>
-                            <button className="thread-card btn btn-primary text-left" onClick={route}>See Post</button>
+                            <button className = 'btn btn-primary' onClick={refresh}>Close</button>
+                            {/* <button className="thread-card btn btn-primary text-left" onClick={route}>See Post</button> */}
                         </div>}
                 </div>
             </Modal>
