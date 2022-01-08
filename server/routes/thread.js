@@ -10,6 +10,7 @@ router.post('/', createPost, (req, res) => {
     .json({
       eventName: res.locals.eventName,
       threadData: res.locals.threadData,
+      threadId: res.locals.threadId
     });
 });
 

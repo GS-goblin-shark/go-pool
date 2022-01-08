@@ -32,6 +32,7 @@ threadController.createPost = async (req, res, next) => {
 
     const threadData = await db.query(queryThread, paramsThread);
     res.locals.threadData = threadData.rows[0];
+    res.locals.threadId = threadData.rows[0]._id;
 
     return next();
   } catch (err) {
