@@ -1,5 +1,5 @@
 {
-  "extends": ["airbnb", "airbnb/hooks", "prettier", "plugin:node/recommended"],
+  "extends": ["airbnb", "airbnb/hooks", "prettier"],
   "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": "warn",
@@ -11,6 +11,8 @@
     "semi": ["warn", "always"],
     "space-infix-ops": "warn",
     "no-empty": "warn",
-    "no-empty-function": "warn"
+    "no-empty-function": "warn",
+    "no-console": "off",
+    "import/no-unresolved": false
   }
 }
