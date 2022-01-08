@@ -109,6 +109,7 @@ function Thread() {
   return (
     <div className='thread-page'>
       <div id='thread-container'>
+        <button className='btn btn-primary'>Delete Thread</button>
         {postList}
       </div>
     </div>

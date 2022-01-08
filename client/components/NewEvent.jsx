@@ -5,11 +5,14 @@ import axios from 'axios';
 import moment from 'moment';
 import Modal from 'react-modal';
 
-function NewEventModal(){
+function NewEventModal(){    
+    //get today's date and format it for backend
+    const today = new Date();
+    const todayFormatted = moment(today).format('YYYY-MM-DD');
+
     const [startDate, setStartDate] = useState(new Date());
-    const [eventDate, setEventDate] = useState('');
+    const [eventDate, setEventDate] = useState(todayFormatted);
     const [modalIsOpen, setIsOpen] = useState(false);
-    //const [emailValue, setEmailValue] = useState('email@email.com');
     const [eventName, setEventName] = useState('');
     const [location, setLocation] = useState('');
     const [thread, setThread] = useState('');
@@ -18,9 +21,7 @@ function NewEventModal(){
     //retrieve the current user's email from the session storage
     const currentUserEmail = sessionStorage.getItem('email')
 
-    //get today's date and format it for backend
-    const today = new Date();
-    const todayFormatted = moment(today).format('YYYY-MM-DD');
+
     
     const openModal = () =>{
         setIsOpen(true);
@@ -64,8 +65,9 @@ function NewEventModal(){
             date_posted: todayFormatted, 
             email: currentUserEmail
         }
+        console.log(data)
 
-        axios.post('/thread', data)
+        axios.post('/db/thread', data)
         .then((res) => {
           setSubmitted(true);
         })
@@ -74,6 +76,9 @@ function NewEventModal(){
         })
    }
 
+   const route = () => {
+    window.location.href = '/thread/' + event_id;
+  }
     return(
         <div id='new-event'>
             <button type="button" className="btn btn-secondary" id="thread-modal-button" onClick={openModal}>Add a new post</button>
@@ -108,7 +113,11 @@ function NewEventModal(){
                         </div>
                         </div>
                     }
-                    {submitted && <p>Your post was created!</p>}
+                    {submitted && 
+                        <div>
+                            <p>Your post was created!</p>
+                            <button className="thread-card btn btn-primary text-left" onClick={route}>See Post</button>
+                        </div>}
                 </div>
             </Modal>
             
