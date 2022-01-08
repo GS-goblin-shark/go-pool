@@ -46,12 +46,12 @@ function signUp() {
     <div className='signup'>
       <h2>Sign Up</h2>
 
-      <form>
-        <label>
+      <form id='signup-form'>
+        <label >
           Email:
         <input
+        className="form-control login-input"
           type='text'
-          placeholder='Email'
           name='email'
           onChange={handleOnChange}
           required>
@@ -60,64 +60,64 @@ function signUp() {
         <label>
           Password:
         <input
+        className="form-control login-input"
           type='password'
           name='password'
           onChange={handleOnChange}
-          placeholder='Password'
           required>
         </input>
         </label>
         <label>
           First name: 
         <input
+        className="form-control login-input"
           type='text'
           name='firstName'
           onChange={handleOnChange}
-          placeholder='First name'
           required>
         </input>
         </label>
         <label>
           Last name:
         <input
+        className="form-control login-input"
           type='text'
           name='lastName'
           onChange={handleOnChange}
-          placeholder='Last name'
           required>
         </input>
         </label>
         <label>
           Access code:
         <input
+        className="form-control login-input"
           type='text'
           name='accessCode'
           onChange={handleOnChange}
-          placeholder='Enter access code'
           required>
         </input>
         </label>
         <label>
           Address:
         <input
+        className="form-control login-input"
           type='text'
           name='address'
           onChange={handleOnChange}
-          placeholder='Address'
           required>
         </input>
         </label>
         <label>
           Phone number:
         <input
+        className="form-control login-input"
           type='text'
           name='phoneNum'
           onChange={handleOnChange}
-          placeholder='Phone number'
           required>
         </input>
         </label>
-        <button type='submit' onClick={handleSubmit}>Submit
+        <button className='btn btn-primary' type='submit' onClick={handleSubmit}>Submit
         </button>
       </form>
     </div>

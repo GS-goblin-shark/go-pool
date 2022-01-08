@@ -9,6 +9,7 @@ function Thread() {
   const [replyClicked, setReplyClicked] = useState(false);
   const [currentThreadId, setCurrentThreadId] = useState('');
   const [posts, setPosts] = useState({posts: []})
+  const [eventId, setEventId] =useState('');
   
   //get the current event's id
   const pathname= window.location.pathname.split('/');
@@ -82,6 +83,16 @@ function Thread() {
     })
   }
 
+  const deleteThread = () => {
+    axios.delete(`/db/thread/${path_id}`)
+    .then(() =>{
+      window.location.href = '/dashboard';
+    })
+    .catch(e => {
+      console.log(e);
+    })
+  }
+
   const postList = posts['posts'].map((msg) => {
     return(
       <div className='post'>
@@ -108,7 +119,10 @@ function Thread() {
 
   return (
     <div className='thread-page'>
-      <div id='thread-container'>
+      <div classname='thread-page-header'>
+        <button className='btn btn-secondary' id='delete-thread-button' onClick={deleteThread}>Delete Event Post</button>
+      </div>
+      <div id='thread-container'>  
         {postList}
       </div>
     </div>

@@ -36,9 +36,25 @@ h2{
   justify-self: flex-end;
 }
 
+//signup page
+#signup-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  button{
+    margin-bottom: 3em;
+  }
+}
+
 // Dashboard page
 #dashboardComponent{
   margin: 2em;
+
+  p{
+    text-align: center;
+  }
 }
 
 #calendar-div{
@@ -117,6 +133,16 @@ h2{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.thread-page-header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#delete-thread-button{
+  margin-top: 10px;
 }
 
 #thread-container{
