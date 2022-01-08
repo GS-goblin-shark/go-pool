@@ -4,7 +4,7 @@ const cookieController = require('../controllers/cookieController');
 const sessionController = require('../controllers/sessionController');
 
 const router = express.Router();
-const { signup, login } = userController;
+const { signup, login, getAddress } = userController;
 const { startSession } = sessionController;
 const { setSSIDCookie } = cookieController;
 
@@ -20,6 +20,10 @@ router.post('/login', login, setSSIDCookie, (req, res) => {
   // inputs: email, password
   // res.status(200).send('Successfully logged in');
   return res.status(200).json({ isMatch: res.locals.isMatch });
+});
+
+router.get('/:email', getAddress, (req, res) => {
+  return res.status(200).json(res.locals.address)
 });
 
 module.exports = router;
