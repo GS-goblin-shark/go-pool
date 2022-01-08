@@ -47,6 +47,7 @@ module.exports = {
       '/api': 'http://localhost:3000',
       '/db/thread': 'http://localhost:3000',
       '/db/message': 'http://localhost:3000',
+      '/threadreply': 'http://localhost:3000'
     },
   },
   resolve: {

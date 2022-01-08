@@ -120,6 +120,7 @@ h2{
   border-radius: 5px;
   padding: 1em;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin: 5px;
 
   strong{
     margin-right: 20px;
@@ -149,9 +150,15 @@ h2{
   border-radius: 5px;
 }
 
+.post-buttons{
+  display: flex;
+  justify-content: flex-end;
+}
+
 .post-reply-button{
   padding: 2px 10px !important;
   margin-top: 10px;
+  margin-left: 10px;
 }
 
 //react-calendar styling
