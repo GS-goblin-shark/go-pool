@@ -91,4 +91,25 @@ userController.login = async (req, res, next) => {
   }
 };
 
+userController.getAddress = async (req, res, next) => {
+  const { email } = req.params.email;
+
+  const queryAddress = 'SELECT users.first_name, users.last_name, users.address FROM users WHERE email = $1;';
+  const addressParam = [email];
+
+  try {
+    const userAddress = await db.query(queryAddress, addressParam);
+    console.log(userAddress.rows[0]);
+    // res.locals.address = userAddress.rows[0];
+    return next();
+  } catch (err) {
+    return next({
+      log: `Error in userController.getAddress: ${err}`,
+      message: {
+        err: 'Error in backend middleware function userController.getAddress'
+      },
+    });
+  }
+};
+
 module.exports = userController;
