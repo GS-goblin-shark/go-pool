@@ -77,7 +77,7 @@ function Thread() {
     return(
       <div className='post'>
       <div className='post-header'>
-        <UserInfo username={msg['first_name'] + ' ' + msg['last_name']}></UserInfo>
+        <UserInfo username={msg['first_name'] + ' ' + msg['last_name']} email={msg.email}></UserInfo>
         <p>{msg['date']}</p>
       </div>
       <p className='post-content'>{msg['thread']}</p>

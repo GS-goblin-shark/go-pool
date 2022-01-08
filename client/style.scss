@@ -162,16 +162,16 @@ h2{
 }
 
 //user info modal
-.userModal{
-  border: none;
-}
-
 .modal-content{
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
 
+}
+
+.map{
+  margin: 10px;
 }
 
 //react-calendar styling
