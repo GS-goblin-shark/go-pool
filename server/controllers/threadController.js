@@ -15,7 +15,7 @@ threadController.createPost = async (req, res, next) => {
     RETURNING event._id, event.event_name ;';
   const paramsEvent = [event_name, date, location];
 
-  const queryThread =
+  const queryThread = 
     '\
   INSERT INTO threads (thread, date, user_id, event_id) \
   VALUES ($1, $2, $3, $4) \

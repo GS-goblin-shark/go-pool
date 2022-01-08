@@ -41,7 +41,7 @@ function DirMessage(user) {
     //console.log(state)
   }
 
-  const sendDM = e => {
+  const handleSubmit = e => {
       e.preventDefault();
 
       //console.log('submitted')
@@ -50,6 +50,7 @@ function DirMessage(user) {
         from_email: state.sender,
         to_email: state.recipient,
         message: state.message[state.message.length - 1]
+        
       })
       .then(function (response) {
         console.log(response);
@@ -93,14 +94,14 @@ function DirMessage(user) {
   return (
     <div>
       <h1>This is a dm thread</h1>
-      <dirMessages />
+      {dirMessages}
       <form>
       <input placeholder='Enter DM here'
           name='message'
           onChange={handleOnChange}
           required>
       </input>
-      <button onClick={sendDM()}>Send</button>
+      <button type='submit' onClick={handleSubmit}>Send</button>
       </form>
     </div>
   );
