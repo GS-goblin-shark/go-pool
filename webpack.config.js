@@ -8,6 +8,7 @@ module.exports = {
   entry: './client/index.js',
   output: {
     path: path.resolve(__dirname, './build'),
+    publicPath: '/',
     filename: 'bundle.js',
   },
   module: {
@@ -44,8 +45,9 @@ module.exports = {
     hot: true,
     proxy: {
       '/api': 'http://localhost:3000',
-      '/thread': 'http://localhost:3000',
+      '/db/thread': 'http://localhost:3000',
       '/db/message': 'http://localhost:3000',
+      '/threadreply': 'http://localhost:3000'
     },
   },
   resolve: {

@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.use('/api', apiRouter);
-app.use('/thread', threadRouter);
+app.use('/db/thread', threadRouter);
 app.use('/db/message', messageRouter);
 app.use('/threadreply', threadResRouter);
 
