@@ -91,6 +91,13 @@ h2{
   background-color: transparent;
 }
 
+.submitted-form-msg{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 //upcoming events
 #upcoming-events-container{
   display: flex;
@@ -102,6 +109,7 @@ h2{
   display: flex;
   flex-direction: column;
   width: 50%;
+  margin-bottom: 50px;
 }
 
 
@@ -120,6 +128,11 @@ h2{
     justify-content: center;
     align-items: center;
     margin: 10px;
+
+    button{
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
 }
 
 .login-input{
